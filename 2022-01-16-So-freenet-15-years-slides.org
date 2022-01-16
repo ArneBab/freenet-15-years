@@ -1,0 +1,405 @@
+#+title: Changes in Freenet since 2007
+#+subtitle: *15 years in 15 minutes*\\
+#+subtitle: Mitigating the pitch black attack\\
+#+subtitle: and other changes
+#+author: Dr. Arne Babenhauserheide
+#+date: 
+#+options: toc:nil H:3 ^:nil todo:nil
+#+PROPERTY: header-args :exports code
+
+#+LANGUAGE: en
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [presentation]
+#+beamer_header: \setbeameroption{show notes}
+# #+beamer_header: \setbeameroption{hide notes}
+# #+beamer_header: \setbeameroption{show only notes}
+#+beamer_header: \setbeamertemplate{navigation symbols}{}
+
+# add appendix
+#+LaTeX_HEADER:\newcounter{framenumberwithoutappendix}
+#+COLUMNS: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+PROPERTY: BEAMER_col_ALL 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 0.0 :ETC
+#+STARTUP: beamer
+#+STARTUP: hidestars
+#+SEQ_TODO: TODO ☯ Σ | ☺
+#+latex_header: \usetheme{Berlin}\usecolortheme{dove}
+#+latex_header: \newcommand{\carlo}[1]{\color{blue!65!black}{#1}}
+#+latex_header: \newcommand{\arne}[1]{\color{red!50!black}{#1}}
+#+LaTeX: \definecolor{bg}{rgb}{0.98,0.98,0.98}
+#+latex_header: \setbeamercolor{block body alerted}{fg=orange,bg=darkgray}
+#+latex_header: \setbeamercolor{block title alerted}{fg=cyan,bg=black}
+#+latex_header: \setbeamertemplate{blocks}[rounded]
+
+#+html_head: <style>img {max-width: 100%;}</style>
+
+* freenet
+** freenet
+*** Freenet since 2007
+
+1999 Freenet started as a thesis by Ian Clarke, known to friends as /sanity/.
+
+In 2007 it added its Darknet-Mode:
+
+**** Freenet Darknet                                           :B_alertblock:
+:PROPERTIES:
+:BEAMER_env: alertblock
+:BEAMER_act: <2->
+:END:
+Friends connect to Friends.
+
+# for diagram syntax see https://plantuml.com/mindmap-diagram
+#+begin_src plantuml :file "friend-to-friend.png" :exports results
+skinparam dpi 1200
+skinparam backgroundcolor transparent
+skinparam ActorFontColor orange
+skinparam actorStyle awesome
+:Friend1: <-> :Friend2:
+
+"Friend" as :Friend1:
+"Friend" as :Friend2:
+#+end_src
+
+#+attr_latex: :height 0.4\textheight
+#+RESULTS:
+[[file:friend-to-friend.png]]
+
+# The specific purpose of this corporation is to assist in developing and disseminating technological solutions to further the open and democratic distribution of information over the Internet or its successor electronic communication networks or organizations. It is also the purpose of this organization to guarantee consenting individuals the free, unmediated, and unimpeded reception and impartation of all intellectual, scientific, literary, social, artistic, creative, human rights, and cultural expressions, opinions and ideas without interference or limitation by or service to state, private, or special interests. It is also the purpose of this organization to educate the world community and be an advocate of these purposes.
+
+** friend-to-friend
+*** Friend-to-Friend
+
+Like WhatsApp where you give a Facebook server your friends’ phone
+numbers and then you can talk directly:
+
+# for diagram syntax see https://plantuml.com/mindmap-diagram
+#+begin_src plantuml :file "friend-to-friend-chat-whatsapp.png" :exports results
+skinparam dpi 1200
+skinparam backgroundcolor transparent
+skinparam actorStyle awesome
+:Friend1: <-> :Friend2:
+(Facebook server) <-- :Friend1:
+(Facebook server) <-- :Friend2:
+
+note bottom of :Friend1:
+I feel safe
+end note
+note bottom of :Friend2:
+Really?
+end note
+
+"Friend" as :Friend1:
+"Friend" as :Friend2:
+#+end_src
+
+#+attr_latex: :height 0.6\textheight
+#+RESULTS:
+[[file:friend-to-friend-whatsapp.png]]
+
+
+*** But without the server
+
+**** Without the server                                        :B_alertblock:
+:PROPERTIES:
+:BEAMER_env: alertblock
+:END:
+
+#+begin_src plantuml :file "friend-to-friend-chat-freenet.png" :exports results
+skinparam dpi 1200
+skinparam backgroundcolor transparent
+skinparam ActorFontColor orange
+skinparam actorStyle awesome
+:Friend1: <-> :Friend2:
+
+note bottom of :Friend1:
+I feel safe
+end note
+note bottom of :Friend2:
+I do, too!
+end note
+
+"Friend" as :Friend1:
+"Friend" as :Friend2:
+#+end_src
+
+#+attr_latex: :height 0.7\textheight
+#+RESULTS:
+[[file:friend-to-friend-chat-freenet.png]]
+
+*** Friend-of-a-Friend routing
+
+By building a network on friend-connections where others can find what
+you write even when you’re offline, Friend-to-Friend Freenet enables
+global pseudonymous publishing that is very hard to block.
+
+**** FOAF network                                              :B_alertblock:
+:PROPERTIES:
+:BEAMER_env: alertblock
+:END:
+
+
+#+begin_src plantuml :file "friend-to-friend-foaf.png" :exports results
+skinparam dpi 600
+skinparam backgroundcolor transparent
+skinparam ActorFontColor orange
+skinparam actorStyle awesome
+:Friend1: <-> :Friend2:
+:Friend2: <--> :Friend3:
+:Friend2: <-> :Friend4:
+:Friend2: <--> :Friend5:
+:Friend3: <-> :Friend6:
+:Friend4: <-> :Friend6:
+
+note bottom of :Friend1:
+I write under pseudonym
+end note
+note right of :Friend6:
+I read you!
+end note
+
+"Friend" as :Friend1:
+"Friend" as :Friend2:
+"Friend" as :Friend3:
+"Friend" as :Friend4:
+"Friend" as :Friend5:
+"Friend" as :Friend6:
+#+end_src
+
+#+attr_latex: :width 0.9\textwidth
+#+RESULTS:
+[[file:friend-to-friend-foaf.png]]
+
+*** Chaos Computer Congress 2005
+
+It was [[https://player.vimeo.com/video/22488244?title=0&byline=0&portrait=0][presented]] by Ian Clarke and Oskar Sandberg at the 22c3 in 2005,
+and it showed a beautiful method for confidential communication and
+censorship resistance.
+
+** chaos
+*** The Attack
+
+Then Christian Grothoff et al. found a flaw. And [[http://grothoff.org/christian/pitchblack.pdf][proved it]].
+
+[[file:pitch-black-paper-screenshot.png]]
+
+*** “But Opennet works”
+
+For 14 years we lived in denial, because “Opennet works”.
+
+**** The mitigation                                            :B_alertblock:
+:PROPERTIES:
+:BEAMER_env: alertblock
+:END:
+
+But in 2021 we finally *[[https://nlnet.nl/project/Freenet-Routing/][fixed it]]*.
+
+#+attr_latex: :height 0.5\textheight
+[[file:freenet-logo-blue-gpl.png]] 
+#+latex: \centering
+→ *[[https://freenetproject.org/freenet-build-1490-released.html][build 1490: “pitch black streaming”]]* ←
+
+** 15 years
+*** 15 years
+
+That’s why now is the time to talk about the changes in Freenet
+since 2007. 15 years of continuous improvements to the
+Friend-to-Friend Freenet network.
+
+Which is a @@latex:\colorbox{darkgray}{\textcolor{orange}{@@Darknet@@latex:}}@@, because that
+is the only privacy preserving way to make this work:
+
+****  protect the privacy of persons sharing data              :B_alertblock:
+:PROPERTIES:
+:BEAMER_env: alertblock
+:END:
+
+/This covers the needs for protection expected from a secure data broker … for Multi-Party Data Exchange in IoT for Health/
+--E. Benoit and J. Sliwa, Bern University of Applied Sciences, Switzerland, 2020,
+[[https://www.igi-global.com/chapter/using-freenet-as-a-broker-for-multi-party-data-exchange-in-iot-for-health/257911][in Applied Approach to Privacy and Security for the Internet of Things]]
+
+*** 14 years to mitigate pitch-black
+
+In 2005 Freenet showed that an Opennet with arbitrary connections
+cannot ever be secured well enough, but that a friend-to-friend model can
+be. In 2007 it was working, but the pitch black attack was published
+which showed how to utterly destroy that friend-to-friend network.
+
+It would take us 14 years to mitigate the attack. During that time
+Freenet progressed a lot. And Opennet lived far longer than we
+expected.
+
+*** Features and Friction: 15 years of Freenet development
+
+Those 14 years of development plus the one year since the mitigation
+was first in place shaped Freenet from a tool for the dedicated into
+an easy to use platform that covers the needs of most communication
+from Social networking over Blogging to Video-on-Demand without
+servers or central point of failure.
+
+But let us begin with the lost: technologies that faltered.
+
+* lost
+** lost: technologies that faltered
+*** lost
+
+In its 22 years of existence, Freenet has seen tools that did not
+stand the time — either because their model did not work out, or
+because they did not see maintenance or were replaced by newer tools.
+
+** the dead
+*** Commentmaker Plugin
+*** Activelink freesite-tags
+*** Thaw torrent-alikes
+** the undead
+*** Frost
+** the sleeping
+*** Freetalk
+*** Spider and Library
+* interactive
+** interactive
+*** FreeChat
+*** 
+** the long-lived
+*** FMS and Flip: Forums and IRC
+*** Freemail
+*** WoT: The disruption antidote
+** the easy
+*** Sharesite
+*** Sone
+*** Freemail
+** the mobile
+*** FreeChat
+*** icicles
+* core
+** core
+*** core
+** assimilated
+*** Activelinks to USKs
+** optimized
+*** Long N2Ntms
+*** Scaling Subscriptions for WoT
+*** Fast and Slow nodes
+** mobile
+*** mobile-node: Freenet on Android
+* media
+** media
+*** Improved HTML and CSS
+*** Audio streaming
+*** Video on demand
+** networkers
+*** The indexes
+
+- +Linkageddon → nerdageddon+
+- +Babbel flog-linking+
+- +Enzos Index+
+- Spider → Clean Spider
+
+* tools
+** plugins
+*** Shoeshop
+*** jfniki
+*** KeyUtils
+*** Keepalive
+** commandline
+*** pyFreenet
+*** infocalypse
+** GUIs
+*** jSite
+* in the dark
+** in the dark
+*** pitch black attack: The mitigation
+* future
+** hope
+*** open questions
+- Better routing? Embeddings that do not preserve the uniform keyspace
+- Friend-to-Friend over tor and i2p? (needs UDP)
+- Steganography Transport Plugins
+*** Plans
+
+#+begin_quote
+No plan survives contact with reality, but a good plan provides
+set-pieces for the path you might actually walk.
+#+end_quote
+
+- 
+
+** together
+*** Towards another 15 years! @@latex:\(\ddot \smile\)@@
+
+Can you imagine where Freenet will then be?
+
+Will you help to shape it?
+
+Let’s build a better future together!
+
+#+latex: \centering
+→ *[[https://freenetproject.org][freenetproject.org]]* ←
+
+#+latex: \vspace{0.5cm}
+
+#+begin_quote
+I worry about my child and the Internet all the time, even though
+she's too young to have logged on yet. Here's what I worry about. I
+worry that 10 or 15 years from now, she will come to me and say
+'Daddy, where were you when they took freedom of the press away from
+the Internet? --Mike Godwin, [[https://www.eff.org/][Electronic Frontier Foundation]]
+#+end_quote
+
+* Appendix                                                  :B_ignoreheading:
+  :PROPERTIES:
+  :BEAMER_env: ignoreheading
+  :BEAMER_opt: allowframebreaks
+  :END:
+
+\appendix
+
+** 
+
+*** References
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks,label=
+    :END:
+
+ \bibliographystyle{apalike}
+ \bibliography{ref}
+
+
+ #+latex_header: \usepackage{hyperref}
+ #+LATEX_HEADER: \usepackage{xcolor}
+ #+LATEX_HEADER: \usepackage[ngerman]{babel}
+ #+LATEX_HEADER: \usepackage{tikz}
+ #+LATEX_HEADER: \setlength{\parindent}{0cm}
+ #+LATEX_HEADER: \setlength{\parskip}{0.5em}
+
+ # unicode input
+ #+LATEX_HEADER: \usepackage{uniinput}
+ #+LATEX_HEADER: \DeclareUnicodeCharacter{B7}{\ensuremath{\cdot}}
+
+ #+LATEX_HEADER: \usepackage{natbib}
+ #+LATEX_HEADER: \usepackage{morefloats}
+ #+LATEX_HEADER: \hypersetup{
+ #+LATEX_HEADER:     colorlinks,
+ #+LATEX_HEADER:     linkcolor={red!50!black},
+ #+LATEX_HEADER:     citecolor={blue!30!black},
+ #+LATEX_HEADER:     urlcolor={cyan}
+ #+LATEX_HEADER: }
+ #+LATEX_HEADER: \usepackage{lmodern}
+ #+LATEX_HEADER: \usepackage[protrusion=true,expansion=true]{microtype}
+ #+LATEX_HEADER: \usepackage{pdfpages}
+
+ #+LATEX_HEADER: % make PDF reproducible as by https://tex.stackexchange.com/questions/229605/reproducible-latex-builds-compile-to-a-file-which-always-hashes-to-the-same-va/313605#313605
+ #+LATEX_HEADER: % For pdfTex:
+ #+LATEX_HEADER: \pdfinfoomitdate=1
+ #+LATEX_HEADER: \pdftrailerid{}
+ #+LATEX_HEADER: \pdfinfo{   /Producer () /Creator () }
+
+
+* Footnotes
+
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# org-export-allow-bind-keywords: t
+# org-babel-noweb-wrap-start: "{{{"
+# org-babel-noweb-wrap-end: "}}}"
+# End:
+
