@@ -36,6 +36,8 @@
 ** freenet
 *** Freenet since 2007
 
+#+html: For the Slides, see <a href="15-years-slides.pdf">15-years-slides.pdf</a>.
+
 1999 Freenet started as a thesis by Ian Clarke, known to friends as /sanity/.
 
 In 2007 it added its Darknet-Mode:
