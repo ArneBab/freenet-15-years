@@ -242,8 +242,9 @@ But let us begin with the lost: technologies that faltered.
 *** lost
 
 In its 22 years of existence, Freenet has seen tools that did not
-stand the time — either because their model did not work out, or
-because they did not see maintenance or were replaced by newer tools.
+stand the test of time — either because their model did not work out,
+or because they did not see maintenance or were replaced by newer
+tools.
 
 ** the dead
 *** Commentmaker Plugin
