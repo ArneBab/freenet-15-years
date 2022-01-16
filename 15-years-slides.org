@@ -45,7 +45,6 @@ In 2007 it added its Darknet-Mode:
 **** Freenet Darknet                                           :B_alertblock:
 :PROPERTIES:
 :BEAMER_env: alertblock
-:BEAMER_act: <2->
 :END:
 Friends connect to Friends.
 
@@ -70,8 +69,9 @@ skinparam actorStyle awesome
 ** friend-to-friend
 *** Friend-to-Friend
 
-Like WhatsApp where you give a Facebook server your friends’ phone
-numbers and then you can talk directly:
+The Friend-to-Friend Darknet mode works conceptually like WhatsApp,
+where you give a Facebook server your friends’ phone numbers and then
+you can talk *directly*:
 
 # for diagram syntax see https://plantuml.com/mindmap-diagram
 #+begin_src plantuml :file "friend-to-friend-chat-whatsapp.png" :exports results
@@ -99,6 +99,9 @@ end note
 
 
 *** But without the server
+
+Different from WhatsApp, Freenet avoids the central server, so no one
+gets your friends phone numbers.
 
 **** Without the server                                        :B_alertblock:
 :PROPERTIES:
