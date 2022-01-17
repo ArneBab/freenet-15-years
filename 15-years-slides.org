@@ -262,7 +262,7 @@ tools.
 *** Spider and Library
 * interactive
 ** interactive
-*** FreeChat
+*** interactive
 *** 
 ** the long-lived
 *** FMS and Flip: Forums and IRC
@@ -273,6 +273,7 @@ tools.
 *** Sone
 *** Freemail
 ** the mobile
+*** mobile-node: Freenet on Android
 *** FreeChat
 *** icicles
 * core
@@ -284,20 +285,20 @@ tools.
 *** Long N2Ntms
 *** Scaling Subscriptions for WoT
 *** Fast and Slow nodes
-** mobile
-*** mobile-node: Freenet on Android
 * media
 ** media
 *** Improved HTML and CSS
 *** Audio streaming
 *** Video on demand
 ** networkers
-*** The indexes
+*** Indexes
 
 - +Linkageddon → nerdageddon+
 - +Babbel flog-linking+
 - +Enzos Index+
 - Spider → Clean Spider
+
+/structure: raw → cleaned/
 
 * tools
 ** plugins
