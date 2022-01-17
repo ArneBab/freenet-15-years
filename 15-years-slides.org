@@ -235,7 +235,7 @@ expected.
 *** Features and Friction: 15 years of Freenet development
 
 Those 14 years of development plus the one year since the mitigation
-was first in place shaped Freenet from a tool for the dedicated into
+was in place shaped Freenet from a tool for the dedicated into
 an easy to use platform that covers the needs of most communication
 from Social networking over Blogging to Video-on-Demand without
 servers or central point of failure.
