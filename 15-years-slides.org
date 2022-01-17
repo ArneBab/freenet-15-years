@@ -37,6 +37,12 @@
 *** Freenet since 2007
 
 #+html: For the Slides, see <a href="15-years-slides.pdf">15-years-slides.pdf</a>.
+#+html: To get the sources, get <a href="15-years.bundle">15-years.bundle</a> and clone it with <code>hg clone 15-years.bundle 15-years</code>.
+
+#+begin_src bash :exports results
+hg bundle --all 15-years.bundle >/dev/null 2>/dev/null
+#+end_src
+
 
 1999 Freenet started as a thesis by Ian Clarke, known to friends as /sanity/.
 
