@@ -73,9 +73,9 @@ skinparam actorStyle awesome
 # The specific purpose of this corporation is to assist in developing and disseminating technological solutions to further the open and democratic distribution of information over the Internet or its successor electronic communication networks or organizations. It is also the purpose of this organization to guarantee consenting individuals the free, unmediated, and unimpeded reception and impartation of all intellectual, scientific, literary, social, artistic, creative, human rights, and cultural expressions, opinions and ideas without interference or limitation by or service to state, private, or special interests. It is also the purpose of this organization to educate the world community and be an advocate of these purposes.
 
 ** friend-to-friend
-*** Friend-to-Friend
+*** Friend-to-Friend like ...
 
-The Friend-to-Friend Darknet mode works conceptually like WhatsApp,
+The Friend-to-Friend Darknet mode works conceptually *like WhatsApp*,
 where you give a Facebook server your friends’ phone numbers and then
 you can talk *directly*:
 
@@ -106,8 +106,8 @@ end note
 
 *** But without the server
 
-Different from WhatsApp, Freenet avoids the central server, so no one
-gets your friends phone numbers.
+Different from WhatsApp, *Freenet avoids the central server*, so no one
+gets your friends’ phone numbers.
 
 **** Without the server                                        :B_alertblock:
 :PROPERTIES:
@@ -181,9 +181,9 @@ end note
 
 *** Chaos Computer Congress 2005
 
-It was [[https://player.vimeo.com/video/22488244?title=0&byline=0&portrait=0][presented]] by Ian Clarke and Oskar Sandberg at the 22c3 in 2005,
-and it showed a beautiful method for confidential communication and
-censorship resistance.
+The new Friend-to-Friend Freenet was [[https://player.vimeo.com/video/22488244?title=0&byline=0&portrait=0][presented]] by Ian Clarke and Oskar
+Sandberg at the 22c3 in 2005, and it showed a beautiful method for
+confidential communication and censorship resistance.
 
 ** chaos
 *** The Attack
@@ -201,7 +201,7 @@ For 14 years we lived in denial, because “Opennet works”.
 :BEAMER_env: alertblock
 :END:
 
-But in 2021 we finally *[[https://nlnet.nl/project/Freenet-Routing/][fixed it]]*.
+But in 2021 we finally *[[https://nlnet.nl/project/Freenet-Routing/][mitigated the attack]]*.
 
 #+attr_latex: :height 0.5\textheight
 [[file:freenet-logo-blue-gpl.png]] 
@@ -240,11 +240,11 @@ expected.
 
 *** Features and Friction: 15 years of Freenet development
 
-Those 14 years of development plus the one year since the mitigation
-was in place shaped Freenet from a tool for the dedicated into
-an easy to use platform that covers the needs of most communication
-from Social networking over Blogging to Video-on-Demand without
-servers or central point of failure.
+Those 15 years — 14 years of development plus the one year since the
+mitigation was in place — shaped Freenet from a tool for the dedicated
+into an easy to use platform that covers the needs of most
+communication from Social networking over Blogging to Video-on-Demand
+without servers or central point of failure.
 
 But let us begin with the lost: technologies that faltered.
 
@@ -333,7 +333,103 @@ No plan survives contact with reality, but a good plan provides
 set-pieces for the path you might actually walk.
 #+end_quote
 
-- 
+- [[https://github.com/freenet/wiki/wiki/High-Impact-tasks][High-Impact Tasks]] @@html:(<a href="/USK@xPkwhS3czAr5oi6yNgLQ7Ld7RbUZuY6eGniS0n5FZtc,WXVIZrZyLlZugJgJKYvbF9SPfKAUAQX9gAX6g7FGNVE,AQACAAE/high-impact-tasks/0/">in Freenet</a>)@@
+- [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
+
+*** High-Impact Tasks
+  :PROPERTIES:
+  :BEAMER_opt: allowframebreaks,label=
+  :END:
+
+- Fix a release-blocker for 8.0 from the [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
+
+- Packaging
+
+  - Create a Debian package (most impactful)
+
+    - [[https://www.mail-archive.com/devl@freenetproject.org/msg49740.html]]
+    - A good starting point would be
+      [[https://github.com/freenet/debian]]
+
+  - Create a Guix package (ArneBab can mentor that)
+  - Add a beta-channel for each release by choosing a separate
+    update key with a sitename derived from the next release
+
+- Polish / removing some of the thousand papercuts (small tasks)
+
+  - Freemail does not work with changed IP/Port used via Proxy
+  - Freemail forgets that it was called to send a new message if you
+    have to login first
+  - jfniki does not work with changed IP/Port used via Proxy
+
+- Decentralized programming
+
+  - Finish porting infocalypse to python3 so it can be used again
+    [[https://hg.sr.ht/~arnebab/infocalypse/browse]]
+  - Improve upon the WoT integration started by operhiem1
+    [[https://github.com/ArneBab/plugin-Infocalypse-WebUI]]
+
+- Content filters for modern codecs can make Freenet viable for realtime
+  streaming
+
+  - improve the existing ogg theora/vorbis filter: Currently filtered
+    videos have annoying stuttering that is not present in unfiltered
+    videos. See [[https://freenet.mantishub.io/view.php?id=7163]]
+  - ogg opus (this reduces the needed bandwidth enough to enable live
+    streaming of audio, see
+    [[https://www.draketo.de/software/stream-over-freenet][How to stream into Freenet]] )
+  - webm with vp9 (direct streaming) or av1 (stream on demand)
+
+- Plugin furbishing: Freemail, Keepalive, Freereader, Shoeshop,
+  Floghelper, Flircp, and JFniki need work to make the workflows
+  enjoyable
+
+  - Freemail does not work if Freenet is used as a proxy.
+  - Port plugin buildsystem to gradle
+
+    - [[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html]]
+    - [[https://www.mail-archive.com/devl@freenetproject.org/msg55180.html]]
+
+- Freenet Mobile [[https://github.com/freenet-mobile/app]]
+
+  - Mobile node: ref exchange as with
+    [[https://github.com/ArneBab/Icicle]]
+  - Mobile node: spread via NFC and/or Bluetooth
+  - Improve FreeChat, FOSS messenger that uses Freenet
+    [[https://github.com/DennisRein/free-chat-2]]
+  - Spread via Messengers (WhatsApp, Signal, Telegram, Threema,
+    DeltaChat, ...)
+
+- Program or browser-plugin to follow freenet:CHK@...-Links (and
+  freenet:SSK@ and freenet:USK@...) by requesting them from the node.
+
+  - Same for magnets, i.e. magnet:?xt=urn:freenet:CHK:...
+  - The browser-plugin depends on [[https://bugzilla.mozilla.org/show_bug.cgi?id=1687099][allow-listing the freenet: schema (issue)]]
+
+- Stream-into-Freenet GUI
+
+- Revamp F2F workflow, see insights here:
+  [[https://www.reddit.com/r/Freenet/comments/lblvdq/how_would_you_improve_freenet/gm2yrxs]]
+
+  - Create invite-only friend-communication workflow among darknet
+    friends (mobile first): read + publish as regular, sharing links and
+    chatting via n2ntm
+
+- REST API for consuming on UI/apps
+
+  - See [[https://github.com/Bombe/fresta]]
+  - Add API documentation (essential) with Open API, examples and
+    documentation
+
+- Revamp Freenet initial page: On first install add help sections and
+  useful links, list official plugins
+
+- Simplify updating and changing dependencies over Freenet: Currently
+  this is a manual, error-prone process which relies on manually
+  patching wrapper-files and blocks at least one pull-request.
+
+- Make the noderef parser work *always*, even if linebreaks are lost,
+  unicode is mis-escaped, or email uses 7-bit ASCII encoding.
 
 ** together
 *** Towards another 15 years! @@latex:\(\ddot \smile\)@@
