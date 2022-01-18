@@ -334,7 +334,8 @@ set-pieces for the path you might actually walk.
 #+end_quote
 
 - [[https://github.com/freenet/wiki/wiki/High-Impact-tasks][High-Impact Tasks]] @@html:(<a href="/USK@xPkwhS3czAr5oi6yNgLQ7Ld7RbUZuY6eGniS0n5FZtc,WXVIZrZyLlZugJgJKYvbF9SPfKAUAQX9gAX6g7FGNVE,AQACAAE/high-impact-tasks/0/">in Freenet</a>)@@
-- [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
+- [[https://github.com/freenet/wiki/wiki/Roadmap][High-Level Roadmap]] — structured by major version
+- [[https://freenet.mantishub.io/roadmap_page.php][Bugtracker-Roadmap]] — very detailed but outdated
 
 *** High-Impact Tasks
   :PROPERTIES:
@@ -360,6 +361,7 @@ set-pieces for the path you might actually walk.
   - Freemail does not work with changed IP/Port used via Proxy
   - Freemail forgets that it was called to send a new message if you
     have to login first
+  - Flircp does not work with changed IP/Port used via Proxy
   - jfniki does not work with changed IP/Port used via Proxy
 
 - Decentralized programming
@@ -376,15 +378,13 @@ set-pieces for the path you might actually walk.
     videos have annoying stuttering that is not present in unfiltered
     videos. See [[https://freenet.mantishub.io/view.php?id=7163]]
   - ogg opus (this reduces the needed bandwidth enough to enable live
-    streaming of audio, see
-    [[https://www.draketo.de/software/stream-over-freenet][How to stream into Freenet]] )
+    streaming of audio, see [[https://www.draketo.de/software/stream-over-freenet][How to stream into Freenet]] )
   - webm with vp9 (direct streaming) or av1 (stream on demand)
 
 - Plugin furbishing: Freemail, Keepalive, Freereader, Shoeshop,
   Floghelper, Flircp, and JFniki need work to make the workflows
   enjoyable
 
-  - Freemail does not work if Freenet is used as a proxy.
   - Port plugin buildsystem to gradle
 
     - [[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html]]
