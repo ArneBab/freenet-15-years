@@ -132,7 +132,7 @@ end note
 "Friend" as :Friend2:
 #+end_src
 
-#+attr_latex: :height 0.7\textheight
+#+attr_latex: :height 0.6\textheight
 #+RESULTS:
 [[file:friend-to-friend-chat-freenet.png]]
 
@@ -342,94 +342,46 @@ set-pieces for the path you might actually walk.
   :BEAMER_opt: allowframebreaks,label=
   :END:
 
-- Fix a release-blocker for 8.0 from the [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
+- Fix a *release-blocker* for 8.0 from the [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
 
-- Packaging
+- *Packaging*: create [[https://github.com/freenet/debian][Debian package]] ([[https://www.mail-archive.com/devl@freenetproject.org/msg49740.html][info]]), Guix package, beta-channel
 
-  - Create a Debian package (most impactful)
+- *Plugin* furbishing: Freemail, Keepalive, Freereader, Shoeshop,
+  Floghelper, Flircp, JFniki: workflows enjoyable, cope with Freenet
+  as proxy
 
-    - [[https://www.mail-archive.com/devl@freenetproject.org/msg49740.html]]
-    - A good starting point would be
-      [[https://github.com/freenet/debian]]
+- Port plugin buildsystems to gradle for easier *CI* ([[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html][info1]], [[https://www.mail-archive.com/devl@freenetproject.org/msg55180.html][info2]])
 
-  - Create a Guix package (ArneBab can mentor that)
-  - Add a beta-channel for each release by choosing a separate
-    update key with a sitename derived from the next release
+- *Decentralized programming*: port [[https://hg.sr.ht/~arnebab/infocalypse/browse][infocalypse]] to python3, improve its [[https://github.com/ArneBab/plugin-Infocalypse-WebUI][WoT integration]]
 
-- Polish / removing some of the thousand papercuts (small tasks)
+- *Content filters* for modern codecs can make Freenet viable for
+  realtime streaming: [[https://freenet.mantishub.io/view.php?id=7163][fix vorbis]], opus for live audio streaming (
+  [[https://www.draketo.de/software/stream-over-freenet][stream into Freenet]] ), webm with vp9 (video streaming) and av1
+  (video on demand)
 
-  - Freemail does not work with changed IP/Port used via Proxy
-  - Freemail forgets that it was called to send a new message if you
-    have to login first
-  - Flircp does not work with changed IP/Port used via Proxy
-  - jfniki does not work with changed IP/Port used via Proxy
+- *[[https://github.com/freenet-mobile/app][Freenet Mobile]]*: ref exchange as with [[https://github.com/ArneBab/Icicle][Icicle]], spread via NFC and
+  similar, improve [[https://github.com/DennisRein/free-chat-2][FreeChat]], spread via Messengers (WhatsApp, Signal,
+  Telegram, Threema, DeltaChat, ...)
 
-- Decentralized programming
+- Enable *clicking* on =freenet:CHK@...=-Links (and
+  =freenet:SSK@...= and =freenet:USK@...= and
+  =magnet:?xt=urn:freenet:CHK:...=) on websites.
+  Browser-plugin needs [[https://bugzilla.mozilla.org/show_bug.cgi?id=1687099][allow-listing the freenet: schema (issue)]]
 
-  - Finish porting infocalypse to python3 so it can be used again
-    [[https://hg.sr.ht/~arnebab/infocalypse/browse]]
-  - Improve upon the WoT integration started by operhiem1
-    [[https://github.com/ArneBab/plugin-Infocalypse-WebUI]]
+- *Stream*-into-Freenet GUI
 
-- Content filters for modern codecs can make Freenet viable for realtime
-  streaming
+- [[https://www.reddit.com/r/Freenet/comments/lblvdq/how_would_you_improve_freenet/gm2yrxs][Revamp]] *F2F workflow* and communication (mobile first).
 
-  - improve the existing ogg theora/vorbis filter: Currently filtered
-    videos have annoying stuttering that is not present in unfiltered
-    videos. See [[https://freenet.mantishub.io/view.php?id=7163]]
-  - ogg opus (this reduces the needed bandwidth enough to enable live
-    streaming of audio, see [[https://www.draketo.de/software/stream-over-freenet][How to stream into Freenet]] )
-  - webm with vp9 (direct streaming) or av1 (stream on demand)
+- Revamp *initial page*: help sections, links, official plugins.
 
-- Plugin furbishing: Freemail, Keepalive, Freereader, Shoeshop,
-  Floghelper, Flircp, and JFniki need work to make the workflows
-  enjoyable
+- *REST API* (start with [[https://github.com/Bombe/fresta][fresta]]) and API documentation, examples and
+  documentation
 
-  - Port plugin buildsystem to gradle
+- Simplify updating and changing *dependencies* over Freenet.
 
-    - [[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html]]
-    - [[https://www.mail-archive.com/devl@freenetproject.org/msg55180.html]]
-
-- Freenet Mobile [[https://github.com/freenet-mobile/app]]
-
-  - Mobile node: ref exchange as with
-    [[https://github.com/ArneBab/Icicle]]
-  - Mobile node: spread via NFC and/or Bluetooth
-  - Improve FreeChat, FOSS messenger that uses Freenet
-    [[https://github.com/DennisRein/free-chat-2]]
-  - Spread via Messengers (WhatsApp, Signal, Telegram, Threema,
-    DeltaChat, ...)
-
-- Program or browser-plugin to follow freenet:CHK@...-Links (and
-  freenet:SSK@ and freenet:USK@...) by requesting them from the node.
-
-  - Same for magnets, i.e. magnet:?xt=urn:freenet:CHK:...
-  - The browser-plugin depends on [[https://bugzilla.mozilla.org/show_bug.cgi?id=1687099][allow-listing the freenet: schema (issue)]]
-
-- Stream-into-Freenet GUI
-
-- Revamp F2F workflow, see insights here:
-  [[https://www.reddit.com/r/Freenet/comments/lblvdq/how_would_you_improve_freenet/gm2yrxs]]
-
-  - Create invite-only friend-communication workflow among darknet
-    friends (mobile first): read + publish as regular, sharing links and
-    chatting via n2ntm
-
-- REST API for consuming on UI/apps
-
-  - See [[https://github.com/Bombe/fresta]]
-  - Add API documentation (essential) with Open API, examples and
-    documentation
-
-- Revamp Freenet initial page: On first install add help sections and
-  useful links, list official plugins
-
-- Simplify updating and changing dependencies over Freenet: Currently
-  this is a manual, error-prone process which relies on manually
-  patching wrapper-files and blocks at least one pull-request.
-
-- Make the noderef parser work *always*, even if linebreaks are lost,
-  unicode is mis-escaped, or email uses 7-bit ASCII encoding.
+- Make the *noderef parser* work *always*, even if linebreaks are lost,
+  unicode is mis-escaped, or email shows the user 7-bit ASCII
+  encoding.
 
 ** together
 *** Towards another 15 years! @@latex:\(\ddot \smile\)@@
