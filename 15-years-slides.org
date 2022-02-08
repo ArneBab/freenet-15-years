@@ -274,6 +274,12 @@ tools.
 *** FMS and Flip: Forums and IRC
 *** Freemail
 *** WoT: The disruption antidote
+*** Precisely updating and subscription-based
+
+[[file:oadsfff-wot-thesis-title.png]]
+
+[[https://github.com/freenet/plugin-WebOfTrust/blob/master/developer-documentation/core-developers-manual/OadSFfF-version1.2-non-print-edition.pdf][Bachlor-thesis: Optimizing a distributed Spam Filter for Freenet (OadSFfF).pdf]]
+
 ** the easy
 *** Sharesite
 *** Sone
@@ -344,29 +350,27 @@ set-pieces for the path you might actually walk.
 
 - Fix a *release-blocker* for 8.0 from the [[https://github.com/freenet/wiki/wiki/Roadmap][Roadmap]]
 
-- *Packaging*: create [[https://github.com/freenet/debian][Debian package]] ([[https://www.mail-archive.com/devl@freenetproject.org/msg49740.html][info]]), Guix package, beta-channel
+- *Packaging*: [[https://github.com/freenet/debian][Debian]] ([[https://www.mail-archive.com/devl@freenetproject.org/msg49740.html][info]]), Guix, ..., beta-channel
 
 - *Plugin* furbishing: Freemail, Keepalive, Freereader, Shoeshop,
   Floghelper, Flircp, JFniki: workflows enjoyable, cope with Freenet
   as proxy
 
-- Port plugin buildsystems to gradle for easier *CI* ([[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html][info1]], [[https://www.mail-archive.com/devl@freenetproject.org/msg55180.html][info2]])
+- Port *plugin buildsystems* to gradle for easier CI ([[https://www.mail-archive.com/devl@freenetproject.org/msg55177.html][info1]], [[https://www.mail-archive.com/devl@freenetproject.org/msg55180.html][info2]])
 
 - *Decentralized programming*: port [[https://hg.sr.ht/~arnebab/infocalypse/browse][infocalypse]] to python3, improve its [[https://github.com/ArneBab/plugin-Infocalypse-WebUI][WoT integration]]
 
-- *Content filters* for modern codecs can make Freenet viable for
-  realtime streaming: [[https://freenet.mantishub.io/view.php?id=7163][fix vorbis]], opus for live audio streaming (
-  [[https://www.draketo.de/software/stream-over-freenet][stream into Freenet]] ), webm with vp9 (video streaming) and av1
-  (video on demand)
+- *Content filters* for modern codecs can make Freenet viable for live
+  streaming: [[https://freenet.mantishub.io/view.php?id=7163][fix vorbis]], opus for live audio ( [[https://www.draketo.de/software/stream-over-freenet][stream into Freenet]] ),
+  webm with vp9 (video) and av1 (video on demand)
 
 - *[[https://github.com/freenet-mobile/app][Freenet Mobile]]*: ref exchange as with [[https://github.com/ArneBab/Icicle][Icicle]], spread via NFC and
   similar, improve [[https://github.com/DennisRein/free-chat-2][FreeChat]], spread via Messengers (WhatsApp, Signal,
   Telegram, Threema, DeltaChat, ...)
 
-- Enable *clicking* on =freenet:CHK@...=-Links (and
-  =freenet:SSK@...= and =freenet:USK@...= and
-  =magnet:?xt=urn:freenet:CHK:...=) on websites.
-  Browser-plugin needs [[https://bugzilla.mozilla.org/show_bug.cgi?id=1687099][allow-listing the freenet: schema (issue)]]
+- Enable *clicking* on =freenet:...=-Links (and
+  =magnet:?xt=urn:freenet:CHK:...=) on websites. Browser-plugin needs
+  [[https://bugzilla.mozilla.org/show_bug.cgi?id=1687099][allow-listing the freenet: schema (issue)]]
 
 - *Stream*-into-Freenet GUI
 
@@ -382,6 +386,8 @@ set-pieces for the path you might actually walk.
 - Make the *noderef parser* work *always*, even if linebreaks are lost,
   unicode is mis-escaped, or email shows the user 7-bit ASCII
   encoding.
+
+- *Use* Freenet. *Talk* about Freenet. *Spread* Freenet.
 
 ** together
 *** Towards another 15 years! @@latex:\(\ddot \smile\)@@
