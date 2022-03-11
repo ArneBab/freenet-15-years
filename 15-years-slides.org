@@ -329,7 +329,7 @@ tools.
 * future
 ** hope
 *** open questions
-- Better routing? Embeddings that do not preserve the uniform keyspace
+- Better routing? Embeddings that do not preserve the uniform keyspace are now possible with the pitch black mitigation
 - Friend-to-Friend over tor and i2p? (needs UDP)
 - Steganography Transport Plugins
 *** Plans
