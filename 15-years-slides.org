@@ -229,8 +229,8 @@ is the only privacy preserving way to make this work:
 
 *** 14 years to mitigate pitch-black
 
-In 2005 Freenet showed that an Opennet with arbitrary connections
-cannot ever be secured well enough, but that a friend-to-friend model can
+In 2005 Freenet showed that an Opennet with *arbitrary connections
+cannot ever be secured well enough*, but that a *friend-to-friend model can*
 be. In 2007 it was working, but the pitch black attack was published
 which showed how to utterly destroy that friend-to-friend network.
 
@@ -318,6 +318,10 @@ tools.
 *** jfniki
 *** KeyUtils
 *** Keepalive
+*** Freereader
+
+# with title
+
 ** commandline
 *** pyFreenet
 *** infocalypse
@@ -389,6 +393,7 @@ set-pieces for the path you might actually walk.
 
 - *Use* Freenet. *Talk* about Freenet. *Spread* Freenet.
 
+*** Easy Issues
 ** together
 *** Towards another 15 years! @@latex:\(\ddot \smile\)@@
 
