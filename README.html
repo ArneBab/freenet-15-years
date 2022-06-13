@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-13 Mo 19:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Changes in Freenet since 2007</title>
+<meta name="author" content="Dr. Arne Babenhauserheide" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>img {max-width: 100%;}</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Changes in Freenet since 2007
+<br />
+<span class="subtitle"><b>15 years in 15 minutes</b><br />
+Mitigating the pitch black attack<br />
+and other changes</span>
+</h1>
+
+<div id="outline-container-org19e8622" class="outline-2">
+<h2 id="org19e8622"><span class="section-number-2">1.</span> freenet</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org4360d46" class="outline-3">
+<h3 id="org4360d46"><span class="section-number-3">1.1.</span> freenet</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgd2d2b9f" class="outline-4">
+<h4 id="orgd2d2b9f"><span class="section-number-4">1.1.1.</span> Freenet since 2007</h4>
+<div class="outline-text-4" id="text-1-1-1">
+For the Slides, see <a href="15-years-slides.pdf">15-years-slides.pdf</a>.
+To get the sources, get <a href="15-years.bundle">15-years.bundle</a> and clone it with <code>hg clone 15-years.bundle 15-years</code>.
+
+<p>
+1999 Freenet started as a thesis by Ian Clarke, known to friends as <i>sanity</i>.
+</p>
+
+<p>
+In 2007 it added its Darknet-Mode:
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orga6bc195"></a>Freenet Darknet&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_alertblock">B_alertblock</span></span><br />
+<div class="outline-text-5" id="text-1-1-1-1">
+<p>
+Friends connect to Friends.
+</p>
+
+
+<div id="orgccb597b" class="figure">
+<p><img src="friend-to-friend.png" alt="friend-to-friend.png" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org7f7e748" class="outline-3">
+<h3 id="org7f7e748"><span class="section-number-3">1.2.</span> friend-to-friend</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org49711c3" class="outline-4">
+<h4 id="org49711c3"><span class="section-number-4">1.2.1.</span> Friend-to-Friend like &#x2026;</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+The Friend-to-Friend Darknet mode works conceptually <b>like WhatsApp</b>,
+where you give a Facebook server your friends’ phone numbers and then
+you can talk <b>directly</b>:
+</p>
+
+
+<div id="orga90eca2" class="figure">
+<p><img src="friend-to-friend-chat-whatsapp.png" alt="friend-to-friend-chat-whatsapp.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org24caebd" class="outline-4">
+<h4 id="org24caebd"><span class="section-number-4">1.2.2.</span> But without the server</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Different from WhatsApp, <b>Freenet avoids the central server</b>, so no one
+gets your friends’ phone numbers.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orgb9bccec"></a>Without the server&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_alertblock">B_alertblock</span></span><br />
+<div class="outline-text-5" id="text-1-2-2-1">
+
+<div id="org86f3955" class="figure">
+<p><img src="friend-to-friend-chat-freenet.png" alt="friend-to-friend-chat-freenet.png" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgcb70b5c" class="outline-4">
+<h4 id="orgcb70b5c"><span class="section-number-4">1.2.3.</span> Friend-of-a-Friend routing</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+By building a network on friend-connections where others can find what
+you write even when you’re offline, Friend-to-Friend Freenet enables
+global pseudonymous publishing that is very hard to block.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge0b5de8"></a>FOAF network&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_alertblock">B_alertblock</span></span><br />
+<div class="outline-text-5" id="text-1-2-3-1">
+
+<div id="orga25d9ef" class="figure">
+<p><img src="friend-to-friend-foaf.png" alt="friend-to-friend-foaf.png" />
+</p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgcbd912b" class="outline-4">
+<h4 id="orgcbd912b"><span class="section-number-4">1.2.4.</span> Chaos Computer Congress 2005</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+The new Friend-to-Friend Freenet was <a href="https://player.vimeo.com/video/22488244?title=0&amp;byline=0&amp;portrait=0">presented</a> by Ian Clarke and Oskar
+Sandberg at the 22c3 in 2005, and it showed a beautiful method for
+confidential communication and censorship resistance.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgddae0a1" class="outline-3">
+<h3 id="orgddae0a1"><span class="section-number-3">1.3.</span> chaos</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org0c4def6" class="outline-4">
+<h4 id="org0c4def6"><span class="section-number-4">1.3.1.</span> The Attack</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Then Christian Grothoff et al. found a flaw. And <a href="http://grothoff.org/christian/pitchblack.pdf">proved it</a>.
+</p>
+
+
+<div id="orgb71df3b" class="figure">
+<p><img src="pitch-black-paper-screenshot.png" alt="pitch-black-paper-screenshot.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10d39c7" class="outline-4">
+<h4 id="org10d39c7"><span class="section-number-4">1.3.2.</span> “But Opennet works”</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+For 14 years we lived in denial, because “Opennet works”.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org9d85137"></a>The mitigation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_alertblock">B_alertblock</span></span><br />
+<div class="outline-text-5" id="text-1-3-2-1">
+<p>
+But in 2021 we finally <b><a href="https://nlnet.nl/project/Freenet-Routing/">mitigated the attack</a></b>.
+</p>
+
+
+<div id="org4411fb7" class="figure">
+<p><img src="freenet-logo-blue-gpl.png" alt="freenet-logo-blue-gpl.png" /> 
+</p>
+</div>
+<p>
+→ <b><a href="https://freenetproject.org/freenet-build-1490-released.html">build 1490: “pitch black streaming”</a></b> ←
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org6bf5caa" class="outline-3">
+<h3 id="org6bf5caa"><span class="section-number-3">1.4.</span> 15 years</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orged5191f" class="outline-4">
+<h4 id="orged5191f"><span class="section-number-4">1.4.1.</span> 15 years</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+That’s why now is the time to talk about the changes in Freenet
+since 2007. 15 years of continuous improvements to the
+Friend-to-Friend Freenet network.
+</p>
+
+<p>
+Which is a Darknet, because that
+is the only privacy preserving way to make this work:
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge3d0481"></a>protect the privacy of persons sharing data&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_alertblock">B_alertblock</span></span><br />
+<div class="outline-text-5" id="text-1-4-1-1">
+<p>
+<i>This covers the needs for protection expected from a secure data broker … for Multi-Party Data Exchange in IoT for Health</i>
+&#x2013;E. Benoit and J. Sliwa, Bern University of Applied Sciences, Switzerland, 2020,
+<a href="https://www.igi-global.com/chapter/using-freenet-as-a-broker-for-multi-party-data-exchange-in-iot-for-health/257911">in Applied Approach to Privacy and Security for the Internet of Things</a>
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org9f9f99e" class="outline-4">
+<h4 id="org9f9f99e"><span class="section-number-4">1.4.2.</span> 14 years to mitigate pitch-black</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+In 2005 Freenet showed that an Opennet with <b>arbitrary connections
+cannot ever be secured well enough</b>, but that a <b>friend-to-friend model can</b>
+be. In 2007 it was working, but the pitch black attack was published
+which showed how to utterly destroy that friend-to-friend network.
+</p>
+
+<p>
+It would take us 14 years to mitigate the attack. During that time
+Freenet progressed a lot. And Opennet lived far longer than we
+expected.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd552455" class="outline-4">
+<h4 id="orgd552455"><span class="section-number-4">1.4.3.</span> Features and Friction: 15 years of Freenet development</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+Those 15 years — 14 years of development plus the one year since the
+mitigation was in place — shaped Freenet from a tool for the dedicated
+into an easy to use platform that covers the needs of most
+communication from Social networking over Blogging to Video-on-Demand
+without servers or central point of failure.
+</p>
+
+<p>
+But let us begin with the lost: technologies that faltered.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb351d93" class="outline-2">
+<h2 id="orgb351d93"><span class="section-number-2">2.</span> lost</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga2651bf" class="outline-3">
+<h3 id="orga2651bf"><span class="section-number-3">2.1.</span> lost: technologies that faltered</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org3c5e6d4" class="outline-4">
+<h4 id="org3c5e6d4"><span class="section-number-4">2.1.1.</span> lost</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+In its 22 years of existence, Freenet has seen tools that did not
+stand the test of time — either because their model did not work out,
+or because they did not see maintenance or were replaced by newer
+tools.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org45b9f27" class="outline-3">
+<h3 id="org45b9f27"><span class="section-number-3">2.2.</span> the dead</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org272408b" class="outline-4">
+<h4 id="org272408b"><span class="section-number-4">2.2.1.</span> Commentmaker Plugin</h4>
+</div>
+<div id="outline-container-org0fe0ef4" class="outline-4">
+<h4 id="org0fe0ef4"><span class="section-number-4">2.2.2.</span> Activelink freesite-tags</h4>
+</div>
+<div id="outline-container-orgc5576d8" class="outline-4">
+<h4 id="orgc5576d8"><span class="section-number-4">2.2.3.</span> Thaw torrent-alikes</h4>
+</div>
+</div>
+<div id="outline-container-orgae0f4f1" class="outline-3">
+<h3 id="orgae0f4f1"><span class="section-number-3">2.3.</span> the undead</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgb206c63" class="outline-4">
+<h4 id="orgb206c63"><span class="section-number-4">2.3.1.</span> Frost</h4>
+</div>
+</div>
+<div id="outline-container-orgd680bb6" class="outline-3">
+<h3 id="orgd680bb6"><span class="section-number-3">2.4.</span> the sleeping</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-org3342dc0" class="outline-4">
+<h4 id="org3342dc0"><span class="section-number-4">2.4.1.</span> Freetalk</h4>
+</div>
+<div id="outline-container-orge8be647" class="outline-4">
+<h4 id="orge8be647"><span class="section-number-4">2.4.2.</span> Spider and Library</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orga8e5660" class="outline-2">
+<h2 id="orga8e5660"><span class="section-number-2">3.</span> interactive</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org2d6f487" class="outline-3">
+<h3 id="org2d6f487"><span class="section-number-3">3.1.</span> interactive</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org6cde7f6" class="outline-4">
+<h4 id="org6cde7f6"><span class="section-number-4">3.1.1.</span> interactive</h4>
+</div>
+<div id="outline-container-org6e9ed08" class="outline-4">
+<h4 id="org6e9ed08"><span class="section-number-4">3.1.2.</span> </h4>
+</div>
+</div>
+<div id="outline-container-orgc891c1c" class="outline-3">
+<h3 id="orgc891c1c"><span class="section-number-3">3.2.</span> the long-lived</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgbf6b735" class="outline-4">
+<h4 id="orgbf6b735"><span class="section-number-4">3.2.1.</span> FMS and Flip: Forums and IRC</h4>
+</div>
+<div id="outline-container-orgccb3391" class="outline-4">
+<h4 id="orgccb3391"><span class="section-number-4">3.2.2.</span> Freemail</h4>
+</div>
+<div id="outline-container-org4239231" class="outline-4">
+<h4 id="org4239231"><span class="section-number-4">3.2.3.</span> WoT: The disruption antidote</h4>
+</div>
+<div id="outline-container-org368a646" class="outline-4">
+<h4 id="org368a646"><span class="section-number-4">3.2.4.</span> Precisely updating and subscription-based</h4>
+<div class="outline-text-4" id="text-3-2-4">
+
+<div id="org519db39" class="figure">
+<p><img src="oadsfff-wot-thesis-title.png" alt="oadsfff-wot-thesis-title.png" />
+</p>
+</div>
+
+<p>
+<a href="https://github.com/freenet/plugin-WebOfTrust/blob/master/developer-documentation/core-developers-manual/OadSFfF-version1.2-non-print-edition.pdf">Bachlor-thesis: Optimizing a distributed Spam Filter for Freenet (OadSFfF).pdf</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ba6c29" class="outline-3">
+<h3 id="org4ba6c29"><span class="section-number-3">3.3.</span> the easy</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-orgb60153d" class="outline-4">
+<h4 id="orgb60153d"><span class="section-number-4">3.3.1.</span> Sharesite</h4>
+</div>
+<div id="outline-container-org087693e" class="outline-4">
+<h4 id="org087693e"><span class="section-number-4">3.3.2.</span> Sone</h4>
+</div>
+<div id="outline-container-orgdddbdbc" class="outline-4">
+<h4 id="orgdddbdbc"><span class="section-number-4">3.3.3.</span> Freemail</h4>
+</div>
+</div>
+<div id="outline-container-org5632d6b" class="outline-3">
+<h3 id="org5632d6b"><span class="section-number-3">3.4.</span> the mobile</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-orgbb3ea3e" class="outline-4">
+<h4 id="orgbb3ea3e"><span class="section-number-4">3.4.1.</span> mobile-node: Freenet on Android</h4>
+</div>
+<div id="outline-container-orga74d12f" class="outline-4">
+<h4 id="orga74d12f"><span class="section-number-4">3.4.2.</span> FreeChat</h4>
+</div>
+<div id="outline-container-org651f688" class="outline-4">
+<h4 id="org651f688"><span class="section-number-4">3.4.3.</span> icicles</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org2f5574f" class="outline-2">
+<h2 id="org2f5574f"><span class="section-number-2">4.</span> core</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org0bfc999" class="outline-3">
+<h3 id="org0bfc999"><span class="section-number-3">4.1.</span> core</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orgbd0c27a" class="outline-4">
+<h4 id="orgbd0c27a"><span class="section-number-4">4.1.1.</span> core</h4>
+</div>
+</div>
+<div id="outline-container-orgc356975" class="outline-3">
+<h3 id="orgc356975"><span class="section-number-3">4.2.</span> assimilated</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org751265f" class="outline-4">
+<h4 id="org751265f"><span class="section-number-4">4.2.1.</span> Activelinks to USKs</h4>
+</div>
+</div>
+<div id="outline-container-org89263d9" class="outline-3">
+<h3 id="org89263d9"><span class="section-number-3">4.3.</span> optimized</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-org9803dfd" class="outline-4">
+<h4 id="org9803dfd"><span class="section-number-4">4.3.1.</span> Long N2Ntms</h4>
+</div>
+<div id="outline-container-org91567fb" class="outline-4">
+<h4 id="org91567fb"><span class="section-number-4">4.3.2.</span> Scaling Subscriptions for WoT</h4>
+</div>
+<div id="outline-container-orge5823f2" class="outline-4">
+<h4 id="orge5823f2"><span class="section-number-4">4.3.3.</span> Fast and Slow nodes</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf044c67" class="outline-2">
+<h2 id="orgf044c67"><span class="section-number-2">5.</span> media</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org290ead8" class="outline-3">
+<h3 id="org290ead8"><span class="section-number-3">5.1.</span> media</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org6c7894f" class="outline-4">
+<h4 id="org6c7894f"><span class="section-number-4">5.1.1.</span> Improved HTML and CSS</h4>
+</div>
+<div id="outline-container-org3e3eee6" class="outline-4">
+<h4 id="org3e3eee6"><span class="section-number-4">5.1.2.</span> Audio streaming</h4>
+</div>
+<div id="outline-container-org6f28462" class="outline-4">
+<h4 id="org6f28462"><span class="section-number-4">5.1.3.</span> Video on demand</h4>
+</div>
+</div>
+<div id="outline-container-org0b884ba" class="outline-3">
+<h3 id="org0b884ba"><span class="section-number-3">5.2.</span> networkers</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-orgdd3a4be" class="outline-4">
+<h4 id="orgdd3a4be"><span class="section-number-4">5.2.1.</span> Indexes</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li><del>Linkageddon → nerdageddon</del></li>
+<li><del>Babbel flog-linking</del></li>
+<li><del>Enzos Index</del></li>
+<li>Spider → Clean Spider</li>
+</ul>
+
+<p>
+<i>structure: raw → cleaned</i>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb76eb63" class="outline-2">
+<h2 id="orgb76eb63"><span class="section-number-2">6.</span> tools</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orge9f71ed" class="outline-3">
+<h3 id="orge9f71ed"><span class="section-number-3">6.1.</span> plugins</h3>
+<div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-org4b9bae0" class="outline-4">
+<h4 id="org4b9bae0"><span class="section-number-4">6.1.1.</span> Shoeshop</h4>
+</div>
+<div id="outline-container-org81233dc" class="outline-4">
+<h4 id="org81233dc"><span class="section-number-4">6.1.2.</span> jfniki</h4>
+</div>
+<div id="outline-container-org006e760" class="outline-4">
+<h4 id="org006e760"><span class="section-number-4">6.1.3.</span> KeyUtils</h4>
+</div>
+<div id="outline-container-orgb716edc" class="outline-4">
+<h4 id="orgb716edc"><span class="section-number-4">6.1.4.</span> Keepalive</h4>
+</div>
+<div id="outline-container-org1a1c6cb" class="outline-4">
+<h4 id="org1a1c6cb"><span class="section-number-4">6.1.5.</span> Freereader</h4>
+<div class="outline-text-4" id="text-6-1-5">
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec18f89" class="outline-3">
+<h3 id="orgec18f89"><span class="section-number-3">6.2.</span> commandline</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-org20db362" class="outline-4">
+<h4 id="org20db362"><span class="section-number-4">6.2.1.</span> pyFreenet</h4>
+</div>
+<div id="outline-container-orga7be8ee" class="outline-4">
+<h4 id="orga7be8ee"><span class="section-number-4">6.2.2.</span> infocalypse</h4>
+</div>
+</div>
+<div id="outline-container-orgf87104c" class="outline-3">
+<h3 id="orgf87104c"><span class="section-number-3">6.3.</span> GUIs</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+<div id="outline-container-org2c6e716" class="outline-4">
+<h4 id="org2c6e716"><span class="section-number-4">6.3.1.</span> jSite</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcafe06b" class="outline-2">
+<h2 id="orgcafe06b"><span class="section-number-2">7.</span> in the dark</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org58d922b" class="outline-3">
+<h3 id="org58d922b"><span class="section-number-3">7.1.</span> in the dark</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<div id="outline-container-orgd73335a" class="outline-4">
+<h4 id="orgd73335a"><span class="section-number-4">7.1.1.</span> pitch black attack: The mitigation</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org61ce6ab" class="outline-2">
+<h2 id="org61ce6ab"><span class="section-number-2">8.</span> future</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgeac66a6" class="outline-3">
+<h3 id="orgeac66a6"><span class="section-number-3">8.1.</span> hope</h3>
+<div class="outline-text-3" id="text-8-1">
+</div>
+<div id="outline-container-orgcbc7869" class="outline-4">
+<h4 id="orgcbc7869"><span class="section-number-4">8.1.1.</span> open questions</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<ul class="org-ul">
+<li>Better routing? Embeddings that do not preserve the uniform keyspace are now possible with the pitch black mitigation</li>
+<li>Friend-to-Friend over tor and i2p? (needs UDP)</li>
+<li>Steganography Transport Plugins</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga28d1c1" class="outline-4">
+<h4 id="orga28d1c1"><span class="section-number-4">8.1.2.</span> Plans</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<blockquote>
+<p>
+No plan survives contact with reality, but a good plan provides
+set-pieces for the path you might actually walk.
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li><a href="https://github.com/freenet/wiki/wiki/High-Impact-tasks">High-Impact Tasks</a> (<a href="/USK@xPkwhS3czAr5oi6yNgLQ7Ld7RbUZuY6eGniS0n5FZtc,WXVIZrZyLlZugJgJKYvbF9SPfKAUAQX9gAX6g7FGNVE,AQACAAE/high-impact-tasks/0/">in Freenet</a>)</li>
+<li><a href="https://github.com/freenet/wiki/wiki/Roadmap">High-Level Roadmap</a> — structured by major version</li>
+<li><a href="https://freenet.mantishub.io/roadmap_page.php">Bugtracker-Roadmap</a> — very detailed but outdated</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1199bcf" class="outline-4">
+<h4 id="org1199bcf"><span class="section-number-4">8.1.3.</span> High-Impact Tasks</h4>
+<div class="outline-text-4" id="text-8-1-3">
+<ul class="org-ul">
+<li>Fix a <b>release-blocker</b> for 8.0 from the <a href="https://github.com/freenet/wiki/wiki/Roadmap">Roadmap</a></li>
+
+<li><b>Packaging</b>: <a href="https://github.com/freenet/debian">Debian</a> (<a href="https://www.mail-archive.com/devl@freenetproject.org/msg49740.html">info</a>), Guix, &#x2026;, beta-channel</li>
+
+<li><b>Plugin</b> furbishing: Freemail, Keepalive, Freereader, Shoeshop,
+Floghelper, Flircp, JFniki: workflows enjoyable, cope with Freenet
+as proxy</li>
+
+<li>Port <b>plugin buildsystems</b> to gradle for easier CI (<a href="https://www.mail-archive.com/devl@freenetproject.org/msg55177.html">info1</a>, <a href="https://www.mail-archive.com/devl@freenetproject.org/msg55180.html">info2</a>)</li>
+
+<li><b>Decentralized programming</b>: port <a href="https://hg.sr.ht/~arnebab/infocalypse/browse">infocalypse</a> to python3, improve its <a href="https://github.com/ArneBab/plugin-Infocalypse-WebUI">WoT integration</a></li>
+
+<li><b>Content filters</b> for modern codecs can make Freenet viable for live
+streaming: <a href="https://freenet.mantishub.io/view.php?id=7163">fix vorbis</a>, opus for live audio ( <a href="https://www.draketo.de/software/stream-over-freenet">stream into Freenet</a> ),
+webm with vp9 (video) and av1 (video on demand)</li>
+
+<li><b><a href="https://github.com/freenet-mobile/app">Freenet Mobile</a></b>: ref exchange as with <a href="https://github.com/ArneBab/Icicle">Icicle</a>, spread via NFC and
+similar, improve <a href="https://github.com/DennisRein/free-chat-2">FreeChat</a>, spread via Messengers (WhatsApp, Signal,
+Telegram, Threema, DeltaChat, &#x2026;)</li>
+
+<li>Enable <b>clicking</b> on <code>freenet:...</code>-Links (and
+<code>magnet:?xt=urn:freenet:CHK:...</code>) on websites. Browser-plugin needs
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1687099">allow-listing the freenet: schema (issue)</a></li>
+
+<li><b>Stream</b>-into-Freenet GUI</li>
+
+<li><a href="https://www.reddit.com/r/Freenet/comments/lblvdq/how_would_you_improve_freenet/gm2yrxs">Revamp</a> <b>F2F workflow</b> and communication (mobile first).</li>
+
+<li>Revamp <b>initial page</b>: help sections, links, official plugins.</li>
+
+<li><b>REST API</b> (start with <a href="https://github.com/Bombe/fresta">fresta</a>) and API documentation, examples and
+documentation</li>
+
+<li>Simplify updating and changing <b>dependencies</b> over Freenet.</li>
+
+<li>Make the <b>noderef parser</b> work <b>always</b>, even if linebreaks are lost,
+unicode is mis-escaped, or email shows the user 7-bit ASCII
+encoding.</li>
+
+<li><b>Use</b> Freenet. <b>Talk</b> about Freenet. <b>Spread</b> Freenet.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8437c9b" class="outline-4">
+<h4 id="org8437c9b"><span class="section-number-4">8.1.4.</span> Easy Issues</h4>
+</div>
+</div>
+<div id="outline-container-org4c60c97" class="outline-3">
+<h3 id="org4c60c97"><span class="section-number-3">8.2.</span> together</h3>
+<div class="outline-text-3" id="text-8-2">
+</div>
+<div id="outline-container-orge28098f" class="outline-4">
+<h4 id="orge28098f"><span class="section-number-4">8.2.1.</span> Towards another 15 years! </h4>
+<div class="outline-text-4" id="text-8-2-1">
+<p>
+Can you imagine where Freenet will then be?
+</p>
+
+<p>
+Will you help to shape it?
+</p>
+
+<p>
+Let’s build a better future together!
+</p>
+
+<p>
+→ <b><a href="https://freenetproject.org">freenetproject.org</a></b> ←
+</p>
+
+<blockquote>
+<p>
+I worry about my child and the Internet all the time, even though
+she's too young to have logged on yet. Here's what I worry about. I
+worry that 10 or 15 years from now, she will come to me and say
+'Daddy, where were you when they took freedom of the press away from
+the Internet? &#x2013;Mike Godwin, <a href="https://www.eff.org/">Electronic Frontier Foundation</a>
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffcbade" class="outline-2">
+<h2 id="orgffcbade"><span class="section-number-2">9.</span> Appendix&#xa0;&#xa0;&#xa0;<span class="tag"><span class="B_ignoreheading">B_ignoreheading</span></span></h2>
+<div class="outline-text-2" id="text-9">
+<p>
+\appendix
+</p>
+</div>
+
+<div id="outline-container-orgcb04e84" class="outline-3">
+<h3 id="orgcb04e84"><span class="section-number-3">9.1.</span> </h3>
+<div class="outline-text-3" id="text-9-1">
+</div>
+<div id="outline-container-orgdea5004" class="outline-4">
+<h4 id="orgdea5004"><span class="section-number-4">9.1.1.</span> References</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+\bibliographystyle{apalike}
+\bibliography{ref}
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Dr. Arne Babenhauserheide</p>
+<p class="date">Created: 2022-06-13 Mo 19:21</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
